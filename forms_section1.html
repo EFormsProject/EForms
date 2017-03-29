@@ -82,44 +82,10 @@
                 </div>
                 <div class="panel-body">
                   <p>This section covers the educational activities of your unit.</p>
-                  <form method="post">
                     <h2> Courses taught:* </h2>
                     <p>    Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
-                    <div class="col-md-3">
-                      <p>Course name</p>
-                      <input type="text" class="form-control mult-choice" placeholder="Enter name" aria-describedby="basic-addon2">
-                    </div>
-                    <div class="col-md-3">
-                      <p>Semester</p>
-                      <div class="form-group mult-choice">
-                        <select class="form-control" id="sel1">
-                          <option>Spring</option>
-                          <option>Fall</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <p>Level</p>
-                       <div class="form-group mult-choice">
-                        <select class="form-control" id="sel1">
-                          <option>Bachelor</option>
-                          <option>Master</option>
-                          <option>PhD</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <p>Number</p>
-                      <input type="text" class="form-control mult-choice" placeholder="Enter number" aria-describedby="basic-addon2">
-                    </div>
-
-                    <table class="table information_json">
-                      <tr class="information_json_plus">
-                        <td></td>
-                        <td></td>
-                        <td><span class="btn btn-primary plus">+</span></td>
-                      </tr>
-                    </table>
+                    <input type="text" name="courses"class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                    
 
                     <h2> Examinations:* </h2>
                     <p>    Numbered list. Include all examinations administered or co-administered by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
@@ -136,7 +102,6 @@
                     <h2> Completed PhD theses:* </h2>
                     <p>    For each thesis, indicate student name, degree (e.g. PhD, Dr. Sc.), name of supervisor, names of other committee members, name of degree-granting institution (Innopolis or other), title of dissertation. </p>
                     <input type="text" name="theses" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2"> 
-                  </form>             
                 </div>
               </div> 
 
@@ -148,23 +113,23 @@
                   <p>This section covers research and publication activities of your unit.</p>
                   <h2> Grants:* </h2>
                   <p>Numbered list. For each item, list: title of project; granting agency; period covered by grant; whether continuation of other grant; amount.</p>
-                  <input type="text" class="form-control" placeholder="Enter the name of the unit here" aria-describedby="basic-addon2">
+                  <input type="text" name="grants" class="form-control" placeholder="Enter the name of the unit here" aria-describedby="basic-addon2">
                   
                   <h2> Project research:* </h2>
                   <p>Numbered list. Include all significant research themes in which members of your unit are involved, whether or not supported by a grant. For each item, list: title of project; Innopolis University personnel involved; external personnel involved if any; start date of project; expected end date; sources of financing.</p>
-                  <input type="text" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                  <input type="text" name="research" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
                   
                   <h2> Research collaborations: </h2>
                   <p> Numbered list. For each item, indicate: country of institution; name of institution (and department or unit if relevant); name of principal contact and any other important contacts; nature of collaboration</p>
-                  <input type="text" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                  <input type="text" name="collaborations" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
 
                   <h2> Conference publications: </h2>
                   <p>Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
-                  <input type="text" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                  <input type="text" name="publications_conf" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
 
                   <h2> Journal publications: </h2>
                   <p> Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
-                  <input type="text" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                  <input type="text" name="publications_jour" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
                 </div>
                 <div class="col-md-12 text-center mybutton">
                     <a href="forms_section4.html"><button type="button" class="btn btn-success">Submit results ➤ </button></a>
