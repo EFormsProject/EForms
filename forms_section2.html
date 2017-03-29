@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Fill forms - Section 2: Teaching</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/forms.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script type="text/javascript" src=js/add_field.js></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+         <div class="navbar-header">
+          <a class="navbar-brand" href="forms_main.html">
+            EForms
+         </a>
+       </div>
+          <p class="navbar-text navbar-right"><a href="signino.html" class="navbar-link">Sign in as the administrator</a></p>
+       </div>
+      </nav>
+      <h1> Fill the forms below: </h1>
+        <div class="row">
+          <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Section 2: Teaching</h3>
+                </div>
+                <div class="panel-body">
+                  <p>This section covers the educational activities of your unit.</p>
+                  <form method="post">
+                    <h2> Courses taught:* </h2>
+                    <p>    Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
+                    <div class="col-md-3">
+                      <p>Course name</p>
+                      <input type="text" class="form-control mult-choice" placeholder="Enter name" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="col-md-3">
+                      <p>Semester</p>
+                      <div class="form-group mult-choice">
+                        <select class="form-control" id="sel1">
+                          <option>Spring</option>
+                          <option>Fall</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <p>Level</p>
+                       <div class="form-group mult-choice">
+                        <select class="form-control" id="sel1">
+                          <option>Bachelor</option>
+                          <option>Master</option>
+                          <option>PhD</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <p>Number</p>
+                      <input type="text" class="form-control mult-choice" placeholder="Enter number" aria-describedby="basic-addon2">
+                    </div>
+
+                    <table class="table information_json">
+                      <tr class="information_json_plus">
+                        <td></td>
+                        <td></td>
+                        <td><span class="btn btn-primary plus">+</span></td>
+                      </tr>
+                    </table>
+
+                    <h2> Examinations:* </h2>
+                    <p>    Numbered list. Include all examinations administered or co-administered by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
+                    <input type="text" name="examinations"class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+
+                    <h2> Students supervised:* </h2>
+                    <p>    For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship </p>
+                    <input type="text" name="students_supervised" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+                    
+                    <h2> Completed student reports:* </h2>
+                    <p>    For each report, indicate student name, title of report, as well as publication plans if any. </p>
+                    <input type="text" name="reports" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+
+                    <h2> Completed PhD theses:* </h2>
+                    <p>    For each thesis, indicate student name, degree (e.g. PhD, Dr. Sc.), name of supervisor, names of other committee members, name of degree-granting institution (Innopolis or other), title of dissertation. </p>
+                    <input type="text" name="theses" class="form-control" placeholder="Enter the name of the head unit here" aria-describedby="basic-addon2">
+
+
+                    <div class="col-md-12 text-center mybutton">
+                      <a href="forms_section3.html"><button type="submit" class="btn btn-success"> To section 3 ➤ </button></a>
+                    </div> 
+                  </form>             
+                </div>
+              </div> 
+          </div>
+        </div>
+    </div> 
+    <style type="text/css">
+      h1 {
+        padding-bottom: 20px;
+        font-size: 44px;
+        text-align: center;
+        color: #FFFFFF;
+      }
+      h2 {
+        padding-bottom: 0px;
+        font-size: 24px;
+      }
+
+      p {
+        padding-right: 20px;
+        padding-left: 3px;
+      }
+
+      body { 
+        background-color: #F5F5F5;
+        background: url('http://zilant.pro/wp-content/uploads/2015/03/innopolis_hero-2048x1093.jpg') fixed;
+          background-size: cover;
+          padding: 0;
+          margin: 0;
+      }
+
+      .mult-choice {
+        padding-right: 0px;
+          background-color: #FFFFFF;
+
+      }
+
+      .mybutton {
+        padding-top: 30px;
+      }
+
+      .panel-body {
+        background-color: #F5F5F5; 
+      }
+
+      .panel-title {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .btn-success {
+        font-size: 18px;
+        width: 300px;
+      }
+
+      .main-p {
+        font-size: 18px;
+        color: white;
+      }
+
+      .main-block {
+        background-color: #87CEFA;
+        padding-top: 80px;
+        margin: 50px;
+        padding-bottom: 80px;
+      }
+
+      .btn-outline {
+        width: 240px;
+        color: white;
+        font-size: 20px;
+        border: solid 2px white;
+        background: transparent;
+        transition: all 0.3s ease-in-out;
+        margin-top: 15px;
+      }
+      .btn-outline:hover,
+      .btn-outline:focus,
+      .btn-outline:active,
+      .btn-outline.active {
+        color: #87CEFA;
+        background: white;
+        border: solid 2px white;
+      }
+  </style>
+  </body>
+  <script type="text/javascript">
+    jQuery('.plus').click(function(){
+          jQuery('.information_json_plus').before(
+          '<tr>' + 
+            '<td><input type="text" class="form-control" id="information_json_name[]" placeholder="Название поля"></td>' +
+            '<td><div class="form-group mult-choice">' + 
+                    '<select class="form-control" id="sel1">' + 
+                        '<option>Bachelor</option>' +
+                        '<option>Master</option>' + 
+                        '<option>PhD</option>' + 
+                      '</select>' +
+                    '</div><td>' + 
+            '<td><div class="form-group mult-choice">' + 
+                    '<select class="form-control" id="sel1">' + 
+                        '<option>Bachelor</option>' +
+                        '<option>Master</option>' + 
+                        '<option>PhD</option>' + 
+                      '</select>' +
+                    '</div><td>' +
+            '<td><input type="text" class="form-control" id="information_json_val[]" placeholder="Значение поля"></td>' +
+            '<td><span class="btn btn-danger minus pull-right">&ndash;</span></td>' +
+          '</tr>'
+          );
+        });
+        // on - так как элемент динамически создан и обычный обработчик с ним не работает
+        jQuery(document).on('click', '.minus', function(){
+          jQuery( this ).closest( 'tr' ).remove(); // удаление строки с полями
+        });
+  </script>
+</html>
