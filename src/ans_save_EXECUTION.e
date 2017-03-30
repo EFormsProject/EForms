@@ -23,8 +23,14 @@ feature -- Execution
 		local
 			file: WSF_FILE_RESPONSE
 		do
-			if request.is_get_request_method then
+			if request.path_info.same_string ("/") then
+				response.send (create {WSF_FILE_RESPONSE}.make_html ("forms_main.html"))
+			end
+			if request.is_get_request_method and request.path_info.same_string ("/forms_section1.html") then
 				create file.make_html ("forms_section1.html")
+				response.send (file)
+			elseif request.is_get_request_method and request.path_info.same_string ("/signin.html") then
+				create file.make_html ("signino.html")
 				response.send (file)
 			elseif request.is_post_request_method then
 					-- Section 1
@@ -43,9 +49,31 @@ feature -- Execution
 				end
 
 					-- Section 2
-
-					-- Section 3
-				response.send (create {WSF_FILE_RESPONSE}.make_html ("forms_section2.html"))
+				print ("%N Section 2: Teaching. Results: %N")
+				if attached {WSF_STRING} request.form_parameter ("courses") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+				if attached {WSF_STRING} request.form_parameter ("examinations") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+				if attached {WSF_STRING} request.form_parameter ("students_supervised") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+				if attached {WSF_STRING} request.form_parameter ("reports") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+				if attached {WSF_STRING} request.form_parameter ("theses") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+					-- Section 3s
+			end
+			if request.is_post_request_method and request.path_info.same_string ("/admin_panel.html?") then
+				if attached {WSF_STRING} request.form_parameter ("username") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
+				if attached {WSF_STRING} request.form_parameter ("password") as l_val then
+					print (l_val.key + " is " + l_val.value + "%N")
+				end
 			end
 		end
 
