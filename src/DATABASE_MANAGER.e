@@ -19,7 +19,9 @@ feature {NONE} -- Initialization
 			create database.make_create_read_write ("database.db")
 
 				-- Create a new table
-			create l_modify.make ("CREATE TABLE IF NOT EXISTS FORM (off_name TEXT, head_name TEXT, date_start TEXT, date_end TEXT, " + "courses TEXT, examinations TEXT, students_supervised TEXT, reports TEXT, theses TEXT, grants TEXT, research TEXT, collaborations TEXT, " + "publications_conf TEXT, publications_jour TEXT);", database)
+			create l_modify.make ("CREATE TABLE IF NOT EXISTS FORM (off_name TEXT, head_name TEXT, date_start TEXT, date_end TEXT, " +
+			"courses TEXT, examinations TEXT, students_supervised TEXT, reports TEXT, theses TEXT, grants TEXT, research TEXT, collaborations TEXT, " +
+			"publications_conf TEXT, publications_jour TEXT);", database)
 			l_modify.execute
 			create query_answer.make_empty
 			create columns.make_empty
@@ -27,6 +29,7 @@ feature {NONE} -- Initialization
 			create args.make_empty
 			i := 0
 			c := '"'
+			create set.make
 		end
 
 feature
@@ -45,6 +48,98 @@ feature
 		end
 
 feature
+	query_info(name: STRING): STRING
+		local
+			l_query: SQLITE_QUERY_STATEMENT
+		do
+			create l_query.make ("SELECT * FROM FORM WHERE off_name = " + c.out + name + c.out + ";", database)
+			query_answer:= "Info about "+ name + " :"
+			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
+				local
+					j, j_count: NATURAL
+				do
+					from
+						j := 1
+						j_count := ia_row.count
+					until
+						j > j_count
+					loop
+
+							-- Print the text value, regardless of type.
+						if not ia_row.is_null (j) then
+							print (ia_row.column_name(j))
+							print (":")
+							query_answer :=  query_answer + " " + (ia_row.column_name(j)) + ": " + ia_row.string_value (j)
+						end
+						j := j + 1
+
+					end
+				end)
+				Result:= query_answer
+
+		end
+
+	query_off_name :LINKED_SET[STRING]
+		local
+			l_query: SQLITE_QUERY_STATEMENT
+		do
+					create l_query.make ("SELECT off_name FROM FORM;", database)
+			l_query.execute (agent (ia_row: SQLITE_RESULT_ROW): BOOLEAN
+				local
+					j, j_count: NATURAL
+				do
+					from
+						j := 1
+						j_count := ia_row.count
+					until
+						j > j_count
+					loop
+							-- Print the text value, regardless of type.
+						if not ia_row.is_null (j) then
+							add_in_set(set, ia_row.string_value(j))
+						end
+						j := j + 1
+
+					end
+				end)
+				Result:= set
+		end
+
+feature
+	add_in_set(l_set: LINKED_SET[STRING]; val: STRING)
+
+	local
+		flag:BOOLEAN
+	do
+		flag:= true
+		across
+			l_set as k
+		loop
+			if k.item ~ val then
+				flag:=false
+			end
+		end
+
+		if flag	then
+			l_set.extend (val)
+		end
+
+	end
+
+feature
+	query_supervised :NATURAL
+		local
+			l_query: SQLITE_QUERY_STATEMENT
+		do
+					create l_query.make ("SELECT students_supervised FROM FORM;", database)
+			l_query.execute (agent (ia_row: SQLITE_RESULT_ROW): BOOLEAN
+				do
+					supervised := supervised + 1
+				end)
+				Result := supervised
+		end
+
+feature
 
 	execute_insert
 		local
@@ -60,7 +155,7 @@ feature
 			database.commit
 			i := 0
 		end
-
+----------------------------------------------------------------------------------
 feature
 
 	query_numbers: STRING
@@ -229,19 +324,15 @@ feature
 feature
 
 	database: SQLITE_DATABASE
-
 	query_answer: STRING
-
 	columns: STRING
-
 	args: STRING
-
 	values: STRING
-
 	i: INTEGER
-
 	c: CHARACTER
-
 	counter: INTEGER
+	supervised: NATURAL
+    set: LINKED_SET[STRING]
+
 
 end
