@@ -1,8 +1,7 @@
-﻿class
+class
 	DATABASE_MANAGER
 
 inherit
-
 	SQLITE_SHARED_API
 
 create
@@ -30,55 +29,38 @@ feature {NONE} -- Initialization
 			i := 0
 			c := '"'
 			create set.make
+			create array.make_filled ("", 2, 1000)
 		end
 
 feature
-
-	insert (column: STRING; data: STRING)
+	insert(column: STRING; data: STRING)
 		do
-				-- Create a insert statement with variables
-			i := i + 1
-			if (i = 1) then
-				columns := column
-				args := c.out + data + c.out
+			--				-- Create a insert statement with variables
+		i:= i+1
+			if (i = 1)  then
+				columns:= column
+				args:= c.out + data +c.out
 			else
-				columns := column + ", " + columns
-				args := c.out + data + c.out + ", " + args
+				columns:= column + ", " + columns
+				args:= c.out + data + c.out+ ", " + args
 			end
 		end
 
 feature
-	query_info(name: STRING): STRING
+	execute_insert
 		local
-			l_query: SQLITE_QUERY_STATEMENT
+			l_insert: SQLITE_INSERT_STATEMENT
 		do
-			create l_query.make ("SELECT * FROM FORM WHERE off_name = " + c.out + name + c.out + ";", database)
-			query_answer:= "Info about "+ name + " :"
-			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
-				local
-					j, j_count: NATURAL
-				do
-					from
-						j := 1
-						j_count := ia_row.count
-					until
-						j > j_count
-					loop
-
-							-- Print the text value, regardless of type.
-						if not ia_row.is_null (j) then
-							print (ia_row.column_name(j))
-							print (":")
-							query_answer :=  query_answer + " " + (ia_row.column_name(j)) + ": " + ia_row.string_value (j)
-						end
-						j := j + 1
-
-					end
-				end)
-				Result:= query_answer
-
+			create l_insert.make ("INSERT INTO FORM ("+ columns +") VALUES (" + args + ");", database)
+			check l_insert_is_compiled: l_insert.is_compiled end
+			database.begin_transaction (False)
+			l_insert.execute
+				-- Commit changes
+			database.commit
+			i:=0
 		end
 
+feature
 	query_off_name :LINKED_SET[STRING]
 		local
 			l_query: SQLITE_QUERY_STATEMENT
@@ -107,7 +89,6 @@ feature
 
 feature
 	add_in_set(l_set: LINKED_SET[STRING]; val: STRING)
-
 	local
 		flag:BOOLEAN
 	do
@@ -127,38 +108,7 @@ feature
 	end
 
 feature
-	query_supervised :NATURAL
-		local
-			l_query: SQLITE_QUERY_STATEMENT
-		do
-					create l_query.make ("SELECT students_supervised FROM FORM;", database)
-			l_query.execute (agent (ia_row: SQLITE_RESULT_ROW): BOOLEAN
-				do
-					supervised := supervised + 1
-				end)
-				Result := supervised
-		end
-
-feature
-
-	execute_insert
-		local
-			l_insert: SQLITE_INSERT_STATEMENT
-		do
-			create l_insert.make ("INSERT INTO FORM (" + columns + ") VALUES (" + args + ");", database)
-			check
-				l_insert_is_compiled: l_insert.is_compiled
-			end
-			database.begin_transaction (False)
-			l_insert.execute
-				-- Commit changes
-			database.commit
-			i := 0
-		end
-----------------------------------------------------------------------------------
-feature
-
-	query_numbers: STRING
+	query_supervised :INTEGER
 		local
 			l_query: SQLITE_QUERY_STATEMENT
 		do
@@ -166,119 +116,54 @@ feature
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
-					number: INTEGER
 				do
-					query_answer.append ("> Row " + ia_row.index.out + ": ")
 					from
 						j := 1
 						j_count := ia_row.count
 					until
 						j > j_count
 					loop
-						number := current.elements_count (ia_row.string_value (j))
-						query_answer.append ("Number of supervised students by the laboratory is " + number.out)
-						counter := counter + number
-						if j < j_count then
-							query_answer.append ("; ")
+							-- Print the text value, regardless of type.
+						if not ia_row.is_null (j) then
+						 supervised:=supervised + ia_row.string_value(j).character_32_occurrences (';')
 						end
+
 						j := j + 1
 					end
-					query_answer.append ("%N")
 				end)
-			query_answer.append ("Total number of supervised students is " + counter.out)
-			Result := query_answer
+				Result:= supervised
 		end
 
 feature
-
-	query_names: STRING
+	query_info(name: STRING): STRING
 		local
 			l_query: SQLITE_QUERY_STATEMENT
 		do
-			create l_query.make ("SELECT off_name FROM FORM;", database)
+			create l_query.make ("SELECT * FROM FORM WHERE off_name = " + c.out + name + c.out + ";", database)
+			query_answer:= "<font color=" + c.out + "white" + c.out + " size=" + "4" + ">Info about " + name + " :</font><p><table border=" + "1" + " bordercolor=" + c.out + "white" + c.out + " align=" + c.out + "left" + c.out + ">"
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
 				do
-					query_answer.append ("> Row " + ia_row.index.out + ": ")
 					from
 						j := 1
 						j_count := ia_row.count
 					until
 						j > j_count
 					loop
-						query_answer.append ("Voting participant name:")
-						if not ia_row.string_value (j).is_empty then
-							query_answer.append (ia_row.string_value (j))
-						else
-							query_answer.append ("<NULL>")
+							-- Print the text value, regardless of type.
+						if not ia_row.is_null (j) then
+							query_answer :=  query_answer + "<tr><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.column_name(j) +
+							"</font></td><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.string_value (j) + "</font></td></tr>"
 						end
-						if j < j_count then
-							query_answer.append ("; ")
-						end
+
 						j := j + 1
 					end
-					query_answer.append ("%N")
 				end)
-			Result := query_answer
+				Result := query_answer + "</table></p>"
 		end
 
 feature
-
-	query_publications: STRING
-		local
-			l_query: SQLITE_QUERY_STATEMENT
-		do
-			create l_query.make ("SELECT publications_conf, publications_jour FROM FORM;", database)
-			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
-				local
-					j, j_count: NATURAL
-				do
-					query_answer.append ("> Row " + ia_row.index.out + ": ")
-					from
-						j := 1
-						j_count := ia_row.count
-					until
-						j > j_count
-					loop
-						if j \\ 2 = 1 then
-							query_answer.append ("Conference publications:")
-						else
-							query_answer.append ("Journal publications:")
-						end
-						if not ia_row.string_value (j).is_empty then
-							query_answer.append (ia_row.string_value (j))
-						else
-							query_answer.append ("<NULL>")
-						end
-						if j < j_count then
-							query_answer.append ("; ")
-						end
-						j := j + 1
-					end
-					query_answer.append ("%N")
-				end)
-			Result := query_answer
-		end
-
-feature
-
-	elements_count (input: STRING): INTEGER
-		local
-			int: INTEGER
-		do
-			across
-				input.split (',') as element
-			loop
-				if not element.item.out.is_empty then
-					int := int + 1
-				end
-			end
-			Result := int
-		end
-
-feature
-
 	querytest
 		local
 			l_query: SQLITE_QUERY_STATEMENT
@@ -296,12 +181,12 @@ feature
 						j > j_count
 					loop
 							-- Print the column name.
-						print (ia_row.column_name (j))
+						print (ia_row.column_name(j))
 						print (":")
 
 							-- Print the text value, regardless of type.
-						if not ia_row.string_value (j).is_empty then
-							print (ia_row.string_value (j))
+						if not ia_row.string_value(j).is_empty then
+							print (ia_row.string_value(j))
 						else
 							print ("<NULL>")
 						end
@@ -315,24 +200,22 @@ feature
 		end
 
 feature
-
 	close
 		do
 			database.close
 		end
 
-feature
 
-	database: SQLITE_DATABASE
-	query_answer: STRING
-	columns: STRING
-	args: STRING
-	values: STRING
-	i: INTEGER
-	c: CHARACTER
-	counter: INTEGER
-	supervised: NATURAL
+feature {NONE}
+    database: SQLITE_DATABASE
+    query_answer: STRING
+    columns: STRING
+    args: STRING
+    values: STRING
+    i: INTEGER
+    c: CHARACTER
+    supervised: INTEGER
     set: LINKED_SET[STRING]
-
-
+	array : ARRAY2[STRING]
 end
+

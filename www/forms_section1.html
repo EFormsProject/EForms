@@ -9,17 +9,18 @@
     <meta name="author" content="">
     <title>Fill forms</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/bootstrap-datetimepicker.min.css">
+
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css">
+    <script type="text/javascript" src="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/js/jquery-1.11.1.min.js"></script>
 
-		<script type="text/javascript" src="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/js/bootstrap.min.js"></script>
+		
 
 		<script src="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/js/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="js/validator.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/bootstrap-datetimepicker.min.css">
   </head>
 
   <body>
@@ -82,27 +83,9 @@
                   <p>This section covers the educational activities of your unit.</p>
                     <h2> Courses taught:* </h2>
                     <p>    Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
-                    <table class="table information_json">
-                      <tr>
-                        <th>Name</th>
-                        <th>Semester</th>
-                        <th>Level</th>
-                        <th>Number</th>
-                      </tr>
-                      <tr class="information_json_plus">
-                        <td><input type="text" class="form-control" id="information_json_name[]" placeholder="Course name"></td>
-                        <td><input type="text" class="form-control" id="information_json_name[]" placeholder="Semester"></td>
-                        <td><input type="text" class="form-control" id="information_json_name[]" placeholder="Level"></td>
-                        <td><input type="text" class="form-control" id="information_json_name[]" placeholder="Number"></td> 
-                        <td><span class="btn btn-danger minus pull-right disabled">&ndash;</span></td>
-                      </tr>
-                       <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <td><span class="btn btn-success plus pull-right">+</span></dh>
-                      </tr>
-                    </table>
+                    <input required type="text" name="courses"class="form-control" placeholder="Enter your answer here" aria-describedby="basic-addon2">
+                    
+
                     <h2> Examinations:* </h2>
                     <p>    Numbered list. Include all examinations administered or co-administered by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
                     <input required type="text" name="examinations"class="form-control" placeholder="Enter your answer here" aria-describedby="basic-addon2">
@@ -148,7 +131,7 @@
                   <input type="text" name="publications_jour" class="form-control" placeholder="Enter your answer here" aria-describedby="basic-addon2">
                 </div>
                 <div class="col-md-12 text-center mybutton">
-                    <a href="forms_section2.html"><button type="submit" class="btn btn-success">Submit results ➤ </button></a>
+                    <a href="forms_main.html"><button type="submit" class="btn btn-success">Submit results ➤ </button></a>
                   </div>     
               </form> 
           </div>
@@ -167,21 +150,13 @@
       }
   </style>
   <script type="text/javascript">
-    // формируем новые поля
-    jQuery('.plus').click(function(){
-      jQuery('.information_json_plus').before(
-      '<tr>' +
-        '<td><input type="text" class="form-control" id="information_json_name[]" placeholder="Course name"></td>' +
-        '<td><input type="text" class="form-control" id="information_json_val[]" placeholder="Semester"></td>' +
-        '<td><input type="text" class="form-control" id="information_json_val[]" placeholder="Level"></td>' +
-        '<td><input type="text" class="form-control" id="information_json_val[]" placeholder="Number"></td>' +
-        '<td><span class="btn btn-danger minus pull-right">&ndash;</span></td>' +
-      '</tr>'
-      );
-    });
-    // on - так как элемент динамически создан и обычный обработчик с ним не работает
-    jQuery(document).on('click', '.minus', function(){
-      jQuery( this ).closest( 'tr' ).remove(); // удаление строки с полями
+    $(function(){
+      $('#form-control').keyup(function){
+          var val = $(this).val();
+          if(val == '')
+            
+        }
+      });
     });
   </script>
   </body>

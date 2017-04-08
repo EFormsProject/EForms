@@ -27,16 +27,18 @@ feature -- Execution
 			query_page: WSF_HTML_PAGE_RESPONSE
 			output: STRING
 			iterator: INTEGER
+			json: JSON_PARSER
+			kk: CHARACTER
 		do
+			kk := '"'
 			create output.make_empty
 			create db.make
 			create main_file.make_html ("www/forms_section1.html")
-			if request.path_info.same_string ("/") then
+			if request.path_info.same_string ("/")  or (request.path_info.same_string ("/forms_main.html") and request.is_get_request_method) then
 				create file.make_html ("www/forms_main.html")
 				response.send (file)
 			end
 			if request.is_get_request_method and request.path_info.same_string ("/forms_section1.html") then
-					--				create file.make_html ("forms_section1.html")
 				response.send (main_file)
 			-- Query : all people who took part in the voting
 			elseif request.is_get_request_method and request.path_info.same_string ("/Query1.html") then
@@ -44,24 +46,62 @@ feature -- Execution
 				create query_page.make
 				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
 				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
-				output := output + "%N<table border=" + "1" + "><tr><th>ID</th><th>Name of the unit</th></tr>"
+				output := "<table border=" + "1" + " bordercolor=" + kk.out + "white" + kk.out + " align=" + kk.out + "left" + kk.out + ">" +
+				"<tr><th><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> ID </font></th><th><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> Name of the unit </font></th></tr>"
 				across
 					db.query_off_name as name
 				loop
-					output := output + "<tr><td>" + iterator.out + "</td><td>" + name.item + "</td></tr>"
+					output := output + "<tr><td><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> " + iterator.out + " </font></td><td><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> " + name.item + " </font></td></tr>"
 					iterator := iterator + 1
 				end
 				output := output + "</table>"
 				query_page.set_title ("Query_1")
-				query_page.set_body (output)
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+      								 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+         							 	"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+         									"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+          										"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+            										"EForms" +
+        										"</a>" +
+      										"</div>" +
+      										"<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" +
+      											"<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" +
+      											"</a>" +
+      										"</p>" +
+       								 	"</div>" +
+       							 	 "</div>" +
+      								 "</nav>" + output)
 				response.send (query_page)
 				output := ""
 				iterator := 1
+			-- Query : Number of all participiants in voting
 			elseif request.is_get_request_method and request.path_info.same_string ("/Query2.html") then
 				create query_page.make
+				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
+				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
 				query_page.set_title ("Query_2")
-				query_page.set_body ("Number of supervised students total : " + db.query_supervised.out)
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+      								 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+         							 	"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+	         							 	"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+	          									"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+	            									"EForms" +
+	        									"</a>" +
+      										"</div>" +
+      										"<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" +
+      											"<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" +
+      											"</a>" +
+      										"</p>" +
+       									"</div>" +
+       								 "</div>" +
+      								 "</nav>" +
+								 	 "<p class=" + kk.out + "col-xs-offset-1" + kk.out + ">" +
+									 "<font size=" + kk.out + "6" + kk.out + " color=" + kk.out + "white" + kk.out + ">" +
+									 	"Number of supervised students total : " + db.query_supervised.out +
+									 "</font>" +
+									 "</p>")
 				response.send (query_page)
+			-- Query : Cumulative info of a given unit
 			elseif request.is_get_request_method and request.path_info.same_string ("/Query3.html") then
 				create query_page.make
 				query_page.set_title ("Query_3")
@@ -69,21 +109,40 @@ feature -- Execution
 				response.send (query_page)
 				output := ""
 			elseif request.is_post_request_method and request.path_info.same_string ("/eforms_admin_panel.html") then
-				output := ""
 				if attached {WSF_STRING} request.form_parameter ("unit") as val then
 					output := db.query_info (val.value)
 				end
-				create file.make_html ("www/Query3.html")
-				response.send (file)
---				create query_page.make
---				query_page.set_title ("Query_3")
---				query_page.set_body (output)
---				response.send (query_page)
+				create query_page.make
+				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
+				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
+				query_page.set_title ("Query_3")
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+      								 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+         							 	"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+	         							 	"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+	          									"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+	            									"EForms" +
+	        									"</a>" +
+      										"</div>" +
+      										"<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" +
+      											"<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" +
+      											"</a>" +
+      										"</p>" +
+       									"</div>" +
+       								 "</div>" +
+      								 "</nav>" + output)
+				response.send (query_page)
+				output := ""
+--				create file.make_html ("www/Query3.html")
+--				response.send (file)
 			elseif request.is_get_request_method and request.path_info.same_string ("/eforms_admin_panel.html") then
 				create file.make_html ("www/eforms_admin_panel.html")
 				response.send (file)
+
 			elseif request.is_post_request_method and request.path_info.same_string ("/forms_section1.html")then
 					-- Section 1
+--				create json.make_with_string (input_string)
+--				json.parse_content
 				if attached {WSF_STRING} request.form_parameter ("off_name") as val_1 then
 					if val_1.is_empty then
 						create file.make_html ("www/forms_section1.html")
@@ -94,6 +153,7 @@ feature -- Execution
 								create file.make_html ("www/forms_section1.html")
 								response.send (main_file)
 							else
+--								json.
 								db.insert ("off_name", val_1.value)
 								db.insert ("head_name", val_2.value)
 								if attached {WSF_STRING} request.form_parameter ("date_start") as val_3 then
@@ -159,6 +219,8 @@ feature -- Execution
 																						end
 																						db.execute_insert
 																						db.querytest
+																						create file.make_html ("www/forms_main.html")
+																						response.send (file)
 																					end
 																				end
 																			end
@@ -178,6 +240,7 @@ feature -- Execution
 					end
 				end
 			end
+
 		end
 
 end
