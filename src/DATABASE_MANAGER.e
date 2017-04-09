@@ -29,21 +29,24 @@ feature {NONE} -- Initialization
 			i := 0
 			c := '"'
 			create set.make
-			create array.make_filled ("", 2, 1000)
 		end
 
 feature
 	insert(column: STRING; data: STRING)
+		require
+			column_not_null: not (column.is_empty or column = void)
+			data_not_void: not (data = void)
 		do
-			--				-- Create a insert statement with variables
-		i:= i+1
-			if (i = 1)  then
-				columns:= column
-				args:= c.out + data +c.out
-			else
-				columns:= column + ", " + columns
-				args:= c.out + data + c.out+ ", " + args
-			end
+				-- Create a insert statement
+			data.adjust
+			i:= i+1
+				if (i = 1)  then
+					columns:= column
+					args:= c.out + data + c.out
+				else
+					columns:= column + ", " + columns
+					args:= c.out + data + c.out+ ", " + args
+				end
 		end
 
 feature
@@ -58,6 +61,8 @@ feature
 				-- Commit changes
 			database.commit
 			i:=0
+		ensure
+			changed: database.total_changes_count = old database.total_changes_count + 1
 		end
 
 feature
@@ -65,7 +70,7 @@ feature
 		local
 			l_query: SQLITE_QUERY_STATEMENT
 		do
-					create l_query.make ("SELECT off_name FROM FORM;", database)
+			create l_query.make ("SELECT off_name FROM FORM;", database)
 			l_query.execute (agent (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
@@ -76,12 +81,10 @@ feature
 					until
 						j > j_count
 					loop
-							-- Print the text value, regardless of type.
 						if not ia_row.is_null (j) then
 							add_in_set(set, ia_row.string_value(j))
 						end
 						j := j + 1
-
 					end
 				end)
 				Result:= set
@@ -89,9 +92,12 @@ feature
 
 feature
 	add_in_set(l_set: LINKED_SET[STRING]; val: STRING)
+	require
+		not_empty: not val.is_empty
 	local
 		flag:BOOLEAN
 	do
+		val.adjust
 		flag:= true
 		across
 			l_set as k
@@ -104,7 +110,8 @@ feature
 		if flag	then
 			l_set.extend (val)
 		end
-
+	ensure
+		item_added: l_set.count = old l_set.count + 1
 	end
 
 feature
@@ -123,11 +130,9 @@ feature
 					until
 						j > j_count
 					loop
-							-- Print the text value, regardless of type.
 						if not ia_row.is_null (j) then
 						 supervised:=supervised + ia_row.string_value(j).character_32_occurrences (';')
 						end
-
 						j := j + 1
 					end
 				end)
@@ -151,7 +156,6 @@ feature
 					until
 						j > j_count
 					loop
-							-- Print the text value, regardless of type.
 						if not ia_row.is_null (j) then
 							query_answer :=  query_answer + "<tr><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.column_name(j) +
 							"</font></td><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.string_value (j) + "</font></td></tr>"
@@ -183,8 +187,6 @@ feature
 							-- Print the column name.
 						print (ia_row.column_name(j))
 						print (":")
-
-							-- Print the text value, regardless of type.
 						if not ia_row.string_value(j).is_empty then
 							print (ia_row.string_value(j))
 						else
@@ -203,6 +205,8 @@ feature
 	close
 		do
 			database.close
+		ensure
+			database_closed: database.is_closed
 		end
 
 
@@ -216,6 +220,5 @@ feature {NONE}
     c: CHARACTER
     supervised: INTEGER
     set: LINKED_SET[STRING]
-	array : ARRAY2[STRING]
 end
 
