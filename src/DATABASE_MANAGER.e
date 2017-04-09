@@ -111,7 +111,7 @@ feature
 			l_set.extend (val)
 		end
 	ensure
-		item_added: l_set.count = old l_set.count + 1
+		item_added: l_set.count = old l_set.count + 1 or l_set.count = old l_set.count
 	end
 
 feature
