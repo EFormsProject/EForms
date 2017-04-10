@@ -1,19 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>EForms - admin eforms_admin_panel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css">
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-  </head> 
-  <body>
-    <div class="container">
+<div class="container">
       <nav class="navbar navbar-default">
          <div class="container-fluid">
          <div class="navbar-header">
@@ -38,9 +23,9 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-md-6">
-          	<form method="post">
-				<input required type="text" name="unit" class="form-control" placeholder="Enter name of unit here" aria-describedby="basic-addon2">
-	            <a href="Query3.html"><button type="submit" class="btn btn-primary text-center">Information about the unit</button></a>
+            <form method="post">
+               <input required type="text" name="unit" class="form-control unit" placeholder="Enter name of unit here" aria-describedby="basic-addon2">
+              <a href="Query3.html"><button type="submit" class="btn btn-primary text-center">Information about the unit</button></a>
             </form>
           </div>
           <div class="col-md-6">
@@ -60,6 +45,7 @@
       .row {
         padding-top: 20px;
       }
+      .unit {
+        width: 400px; 
+      }
     </style>
-  </body>
-</html>

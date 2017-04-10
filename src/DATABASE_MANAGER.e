@@ -115,11 +115,13 @@ feature
 	end
 
 feature
-	query_supervised :INTEGER
+	query_supervised :STRING
 		local
 			l_query: SQLITE_QUERY_STATEMENT
 		do
-			create l_query.make ("SELECT students_supervised FROM FORM;", database)
+			query_answer.make_empty
+			query_answer:= "<p><table border=" + "1" + " bordercolor=" + c.out + "black" + c.out + " align=" + c.out + "center" + c.out + ">"
+			create l_query.make ("SELECT off_name, students_supervised FROM FORM;", database)
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
@@ -130,13 +132,18 @@ feature
 					until
 						j > j_count
 					loop
+							-- Print the text value, regardless of type.
 						if not ia_row.is_null (j) then
-						 supervised:=supervised + ia_row.string_value(j).character_32_occurrences (';')
+							if j \\ 2 = 1 then
+								query_answer :=  query_answer + "<tr><td><font color=" + c.out + "black" + c.out + " size=" + "4" + ">" + ia_row.string_value(j) + "</font></td>"
+							else
+								query_answer :=  query_answer + "<td><font color=" + c.out + "black" + c.out + " size=" + "4" + ">" + ia_row.string_value(j).character_32_occurrences (';').out + "</font></td></tr>"
+							end
 						end
 						j := j + 1
 					end
 				end)
-				Result:= supervised
+				Result:= query_answer + "</table></p><style type=" + c.out + "text/css" + c.out + ">table{ background-color: #FFFFFF;}</style>"
 		end
 
 feature
@@ -187,7 +194,7 @@ feature
 							-- Print the column name.
 						print (ia_row.column_name(j))
 						print (":")
-						if not ia_row.string_value(j).is_empty then
+						if not ia_row.is_null (j) then
 							print (ia_row.string_value(j))
 						else
 							print ("<NULL>")
@@ -218,7 +225,6 @@ feature {NONE}
     values: STRING
     i: INTEGER
     c: CHARACTER
-    supervised: INTEGER
     set: LINKED_SET[STRING]
 end
 

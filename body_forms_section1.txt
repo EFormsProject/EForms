@@ -1,0 +1,613 @@
+﻿<div class="container">
+
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+         <div class="navbar-header">
+          <a class="navbar-brand" href="forms_main.html">
+            EForms
+         </a>
+      </nav>
+
+      <h1> Fill the forms below: </h1>
+        <div class="row">
+          <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <form method="post" id="form">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Section 1: General</h3>
+                </div>
+                <div class="panel-body">
+                  <h2> Name of the unit:* </h2>
+                  <p>    Official name, for example laboratory name</p>
+                  <input required maxlenght="15" type="text" class="form-control" name="off_name" placeholder="Enter the name of the unit here" aria-describedby="basic-addon2">
+
+                  <h2> Name of head unit:* </h2>
+                  <input required type="text" class="form-control" id="head_name" name="head_name" placeholder="Enter your answer here" aria-describedby="basic-addon2">
+
+                  <h2> Beginning of the reporting period: </h2>
+                  <p>    If it differs from 01.01.16</p>
+                  <div class="input-group date" id="datetimepicker1">
+                  <input name="date_start" type="text" id="date_start" class="form-control" />
+                    <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                  </div>
+
+                  <h2> End of the reporting period: </h2>
+                  <p>    If it differs from 01.01.17</p>
+                  <div class="input-group date" id="datetimepicker2">
+                  <input name="date_end" type="text" id="date_end" class="form-control" />
+                    <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                  </div> 
+                              
+                </div>
+              </div> 
+
+              <!--Section 2-->
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Section 2: Teaching</h3>
+                </div>
+                <div class="panel-body">
+                  <p>This section covers the educational activities of your unit.</p>
+                    <h2> Courses taught:* </h2>
+                    <p>    Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
+                    <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Name</th>
+                      <th>Semester</th>
+                      <th>Level</th>
+                      <th>Number</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="courses-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="courses-semester-1" type="text" class="form-control" placeholder="Semester"></td>
+                      <td><input name="courses-level-1" type="text" class="form-control" placeholder="Level"></td>
+                      <td><input name="courses-number-1" type="text" class="form-control" placeholder="Number"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="courses-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary courses-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                    
+
+                    <h2> Examinations:* </h2>
+                    <p>    Numbered list. Include all examinations administered or co-administered by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
+                    <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Name</th>
+                      <th>Semester</th>
+                      <th>Kind</th>
+                      <th>Number</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="exam-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="exam-semester-1" type="text" class="form-control" placeholder="Semester"></td>
+                      <td><input name="exam-kind-1" type="text" class="form-control" placeholder="Kind"></td>
+                      <td><input name="exam-number-1" type="text" class="form-control" placeholder="Number"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="exam-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary exam-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+
+                    <h2> Students supervised:* </h2>
+                    <p>    For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship </p>
+                    <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Name</th>
+                      <th>Nature of work</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="studs-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="studs-number-1" type="text" class="form-control" placeholder="Nature"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="studs-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary studs-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                    
+                    <h2> Completed student reports:* </h2>
+                    <p>    For each report, indicate student name, title of report, as well as publication plans if any. </p>
+                    <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Student name</th>
+                      <th>Title</th>
+                      <th>Publication plans</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="reports-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="reports-title-1" type="text" class="form-control" placeholder="Title"></td>
+                      <td><input name="reports-plans-1" type="text" class="form-control" placeholder="Plans"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="reports-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary reports-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+
+                    <h2> Completed PhD theses:* </h2>
+                    <p>    For each thesis, indicate student name, degree (e.g. PhD, Dr. Sc.), name of supervisor, names of other committee members, name of degree-granting institution (Innopolis or other), title of dissertation. </p>
+                    <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Student name</th>
+                      <th>Degree</th>
+                      <th>Supervisor</th>
+                      <th>Committee</th>
+                      <th>Degree-granting institution name</th>
+                      <th>Title</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="theses-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="theses-degree-1" type="text" class="form-control" placeholder="Title"></td>
+                      <td><input name="theses-supervisor-1" type="text" class="form-control" placeholder="Plans"></td>
+                      <td><input name="theses-committee-1" type="text" class="form-control" placeholder="Plans"></td>
+                      <td><input name="theses-inst-name-1" type="text" class="form-control" placeholder="Plans"></td>
+                      <td><input name="theses-title-1" type="text" class="form-control" placeholder="Plans"></td>                      
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="theses-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary theses-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                </div>
+              </div> 
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Section 3: Research</h3>
+                </div>
+                <div class="panel-body">
+                  <p>This section covers research and publication activities of your unit.</p>
+                  <h2> Grants:* </h2>
+                  <p>Numbered list. For each item, list: title of project; granting agency; period covered by grant; whether continuation of other grant; amount.</p>
+                  <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Title</th>
+                      <th>Agency</th>
+                      <th>Period</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="grants-title-1" type="text" class="form-control" placeholder="Title"></td>
+                      <td><input name="grants-agency-1" type="text" class="form-control" placeholder="Agency"></td>
+                      <td><input name="grants-period-1" type="text" class="form-control" placeholder="Period"></td>
+                      <td><input name="grants-type-1" type="text" class="form-control" placeholder="Type"></td>
+                      <td><input name="grants-amount-1" type="text" class="form-control" placeholder="Amount"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="grants-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary grants-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                  
+                  <h2> Project research:* </h2>
+                  <p>Numbered list. Include all significant research themes in which members of your unit are involved, whether or not supported by a grant. For each item, list: title of project; Innopolis University personnel involved; external personnel involved if any; start date of project; expected end date; sources of financing.</p>
+                  <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Title</th>
+                      <th>Personnel</th>
+                      <th>External personnel</th>
+                      <th>Start date</th>
+                      <th>End date</th>
+                      <th>Sources of financing</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="research-title-1" type="text" class="form-control" placeholder="Title"></td>
+                      <td><input name="research-personnel-1" type="text" class="form-control" placeholder="Personnel"></td>
+                      <td><input name="research-expersonnel-1" type="text" class="form-control" placeholder="External personnel"></td>
+                      <td><input name="research-start-date-1" type="text" class="form-control" placeholder="Start date"></td>
+                      <td><input name="research-end-date-1" type="text" class="form-control" placeholder="End date"></td>
+                      <td><input name="research-sources-1" type="text" class="form-control" placeholder="Sources"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="research-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary research-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                  
+                  <h2> Research collaborations: </h2>
+                  <p> Numbered list. For each item, indicate: country of institution; name of institution (and department or unit if relevant); name of principal contact and any other important contacts; nature of collaboration</p>
+                  <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Country</th>
+                      <th>Name</th>
+                      <th>Departament</th>
+                      <th>Contact</th>
+                      <th>Nature</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="col-country-1" type="text" class="form-control" placeholder="Country"></td>
+                      <td><input name="col-name-1" type="text" class="form-control" placeholder="Name"></td>
+                      <td><input name="col-departament-1" type="text" class="form-control" placeholder="Departament"></td>
+                      <td><input name="col-contact-1" type="text" class="form-control" placeholder="Contact"></td>
+                      <td><input name="col-nature-1" type="text" class="form-control" placeholder="Nature"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="col-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary col-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+
+                  <h2> Conference publications: </h2>
+                  <p>Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
+                  <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Author</th>
+                      <th>Publication</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="conf-au-1" type="text" class="form-control" placeholder="Author"></td>
+                      <td><input name="conf-pub-1" type="text" class="form-control" placeholder="Publication"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="conf-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary conf-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+
+                  <h2> Journal publications: </h2>
+                  <p> Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
+                  <table class="table information_json">
+                    <tr>
+                      <th class="tbl-id">ID</th>
+                      <th>Author</th>
+                      <th>Publication</th>
+                      <th class="tbl-last"></th>
+                    </tr>
+                    <tr>
+                      <td class="tbl-id"><p>1</p></td>
+                      <td><input name="journal-au-1" type="text" class="form-control" placeholder="Author"></td>
+                      <td><input name="journal-pub-1" type="text" class="form-control" placeholder="Publication"></td>
+                      <td class="tbl-last"></td>
+                    </tr>
+                    <tr class="journal-information_json_plus">
+                      <td class="tbl-id"></td>
+                      <td></td>
+                      <td></td>
+                      <td class="tbl-last"><span class="btn btn-primary journal-plus pull-right">+</span></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-md-12 text-center mybutton">
+                    <a href="forms_main.html"><button type="submit" class="btn btn-success">Submit results</button></a>
+                  </div>     
+              </form> 
+          </div>
+        </div>
+    </div> 
+
+    <!--Research project script-->
+    <script type="text/javascript">
+      var counter = 1;
+      jQuery('.research-plus').click(function(){
+        counter = counter + 1;
+        jQuery('.research-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter + '</p></td>' + 
+          '<td><input name="research-title-' + counter + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="research-personnel-' + counter + '" type="text" class="form-control" placeholder="Personnel"></td>' +
+          '<td><input name="research-expersonnel-' + counter + '" type="text" class="form-control" placeholder="External personnel"></td>' +
+          '<td><input name="research-start-date-' + counter + '" type="text" class="form-control" placeholder="Start date"></td>' +
+          '<td><input name="research-end-date-' + counter + '" type="text" class="form-control" placeholder="End date"></td>' +
+          '<td><input name="research-sources-' + counter + '" type="text" class="form-control" placeholder="Sources"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger research-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.research-minus', function(){
+      counter = counter - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Courses script-->
+    <script type="text/javascript">
+      var counter2 = 1;
+      jQuery('.courses-plus').click(function(){
+        counter2 = counter2 + 1;
+        jQuery('.courses-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter2 + '</p></td>' + 
+          '<td><input name="courses-name-' + counter2 + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="courses-semester-' + counter2 + '" type="text" class="form-control" placeholder="Agency"></td>' +
+          '<td><input name="courses-level-' + counter2 + '" type="text" class="form-control" placeholder="Period"></td>' +
+          '<td><input name="courses-number-' + counter2 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger courses-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.courses-minus', function(){
+      counter2 = counter2 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Exams script-->
+    <script type="text/javascript">
+      var counter3 = 1;
+      jQuery('.exam-plus').click(function(){
+        counter3 = counter3 + 1;
+        jQuery('.exam-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter3 + '</p></td>' + 
+          '<td><input name="exam-name-' + counter3 + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="exam-semester-' + counter3 + '" type="text" class="form-control" placeholder="Agency"></td>' +
+          '<td><input name="exam-kind-' + counter3 + '" type="text" class="form-control" placeholder="Period"></td>' +
+          '<td><input name="exam-number-' + counter3 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger exam-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.exam-minus', function(){
+      counter3 = counter3 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Students supervised script-->
+    <script type="text/javascript">
+      var counter4 = 1;
+      jQuery('.studs-plus').click(function(){
+        counter4 = counter4 + 1;
+        jQuery('.studs-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter4 + '</p></td>' + 
+          '<td><input name="studs-name-' + counter4 + '" type="text" class="form-control" placeholder="Name"></td>' +
+          '<td><input name="studs-number-' + counter4 + '" type="text" class="form-control" placeholder="Number"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger studs-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.studs-minus', function(){
+      counter4 = counter4 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Completed stud reports script-->
+    <script type="text/javascript">
+      var counter5 = 1;
+      jQuery('.reports-plus').click(function(){
+        counter5 = counter5 + 1;
+        jQuery('.reports-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter5 + '</p></td>' + 
+          '<td><input name="reports-name-' + counter5 + '" type="text" class="form-control" placeholder="Name"></td>' +
+          '<td><input name="reports-title-' + counter5 + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="reports-plans-' + counter5 + '" type="text" class="form-control" placeholder="Plans"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger reports-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.reports-minus', function(){
+      counter5 = counter5 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Courses script-->
+    <script type="text/javascript">
+      var counter6 = 1;
+      jQuery('.theses-plus').click(function(){
+        counter6 = counter6 + 1;
+        jQuery('.theses-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter6 + '</p></td>' + 
+          '<td><input name="theses-name-' + counter6 + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="theses-degree-' + counter6 + '" type="text" class="form-control" placeholder="Agency"></td>' +
+          '<td><input name="theses-supervisor-' + counter6 + '" type="text" class="form-control" placeholder="Period"></td>' +
+          '<td><input name="theses-committee-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input name="theses-inst-name-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input name="theses-title-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger courses-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.theses-minus', function(){
+      counter6 = counter6 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Grants script-->
+    <script type="text/javascript">
+      var counter7 = 1;
+      jQuery('.grants-plus').click(function(){
+        counter7 = counter7 + 1;
+        jQuery('.grants-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter7 + '</p></td>' + 
+          '<td><input name="grants-title-' + counter7 + '" type="text" class="form-control" placeholder="Title"></td>' +
+          '<td><input name="grants-agency-' + counter7 + '" type="text" class="form-control" placeholder="Agency"></td>' +
+          '<td><input name="grants-period-' + counter7 + '" type="text" class="form-control" placeholder="Period"></td>' +
+          '<td><input name="grants-type-' + counter7 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input name="grants-amount-' + counter7 + '" type="text" class="form-control" placeholder="Amount"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger grants-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.grants-minus', function(){
+      counter7 = counter7 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Research collaborations script-->
+    <script type="text/javascript">
+      var counter8 = 1;
+      jQuery('.col-plus').click(function(){
+        counter8 = counter8 + 1;
+        jQuery('.col-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter8 + '</p></td>' + 
+          '<td><input name="col-country-' + counter8 + '" type="text" class="form-control" placeholder="Country"></td>' +
+          '<td><input name="col-name-' + counter8 + '" type="text" class="form-control" placeholder="Name"></td>' +
+          '<td><input name="col-departament-' + counter8 + '" type="text" class="form-control" placeholder="Departament"></td>' +
+          '<td><input name="col-contact-' + counter8 + '" type="text" class="form-control" placeholder="Contact"></td>' +
+          '<td><input name="col-nature-' + counter8 + '" type="text" class="form-control" placeholder="Nature"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger col-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.col-minus', function(){
+      counter8 = counter8 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Conference publications script-->
+    <script type="text/javascript">
+      var counter9 = 1;
+      jQuery('.conf-plus').click(function(){
+        counter9 = counter9 + 1;
+        jQuery('.conf-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter9 + '</p></td>' + 
+          '<td><input name="conf-au-' + counter9 + '" type="text" class="form-control" placeholder="Author"></td>' +
+          '<td><input name="conf-pub-' + counter9 + '" type="text" class="form-control" placeholder="Publication"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger conf-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.conf-minus', function(){
+      counter9 = counter9 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <!--Journal publications script-->
+    <script type="text/javascript">
+      var counter10 = 1;
+      jQuery('.journal-plus').click(function(){
+        counter10 = counter10 + 1;
+        jQuery('.journal-information_json_plus').before(
+        '<tr>' +
+          '<td class="tbl-id"><p>' + counter10 + '</p></td>' + 
+          '<td><input name="journal-au-' + counter10 + '" type="text" class="form-control" placeholder="Author"></td>' +
+          '<td><input name="journal-pub-' + counter10 + '" type="text" class="form-control" placeholder="Publication"></td>' +
+          '<td class="tbl-id"><span class="btn btn-danger journal-minus pull-right">&ndash;</span></td>' +
+        '</tr>'
+        );
+      });
+      jQuery(document).on('click', '.journal-minus', function(){
+      counter10 = counter10 - 1;
+      jQuery( this ).closest( 'tr' ).remove(); 
+      });
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+      $('#datetimepicker1').datetimepicker({language: 'ru',minuteStepping:10,defaultDate:"01.01.2016",daysOfWeekDisabled:[0,6], pickTime: false});
+      $('#datetimepicker2').datetimepicker({language: 'ru', pickTime: false, defaultDate:"01.01.2017"});
+    });
+  </script>
+
+  <style type="text/css">
+      table {
+        table-layout: fixed;
+        width: 100%;
+      }
+      .mybutton {
+        padding-bottom: 20px;
+      }
+      .tbl-id {
+        text-align: center;
+        width: 28px;
+      }
+      .tbl-last {
+        width: 46px;
+      }
+      p {
+        padding-top: 6px;
+      }
+  </style>
+  <script type="text/javascript">
+    $(function(){
+      $('#form-control').keyup(function){
+          var val = $(this).val();
+          if(val == '')
+        }
+      });
+    });
+  </script>
