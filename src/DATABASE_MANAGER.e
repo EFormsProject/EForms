@@ -120,7 +120,7 @@ feature
 			l_query: SQLITE_QUERY_STATEMENT
 		do
 			query_answer.make_empty
-			query_answer:= "<p><table border=" + "1" + " bordercolor=" + c.out + "black" + c.out + " align=" + c.out + "center" + c.out + ">"
+			query_answer := "<p><table><tr><th><font size=4>Name of the unit</font></th><th><font size=4>Number of students</font></th></tr>"
 			create l_query.make ("SELECT off_name, students_supervised FROM FORM;", database)
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
@@ -143,7 +143,7 @@ feature
 						j := j + 1
 					end
 				end)
-				Result:= query_answer + "</table></p><style type=" + c.out + "text/css" + c.out + ">table{ background-color: #FFFFFF;}</style>"
+				Result:= query_answer + "</table></p><style type=" + c.out + "text/css" + c.out + ">table{ margin-left: 110px; border-color: black; border: 5px double #000; background: #FFFFFF; border-spacing: 1px; } td, th {padding: 7px; border: 1px solid black;}</style>"
 		end
 
 feature
@@ -152,7 +152,7 @@ feature
 			l_query: SQLITE_QUERY_STATEMENT
 		do
 			create l_query.make ("SELECT * FROM FORM WHERE off_name = " + c.out + name + c.out + ";", database)
-			query_answer:= "<font color=" + c.out + "white" + c.out + " size=" + "4" + ">Info about " + name + " :</font><p><table border=" + "1" + " bordercolor=" + c.out + "white" + c.out + " align=" + c.out + "left" + c.out + ">"
+			query_answer:= "<p><font color=" + c.out + "white" + c.out + " size=" + "5" + ">Info about " + name + " :</font></p><table>"
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
@@ -164,14 +164,13 @@ feature
 						j > j_count
 					loop
 						if not ia_row.is_null (j) then
-							query_answer :=  query_answer + "<tr><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.column_name(j) +
-							"</font></td><td><font color=" + c.out + "white" + c.out + " size=" + "4" + ">" + ia_row.string_value (j) + "</font></td></tr>"
+							query_answer :=  query_answer + "<tr><td><font color=" + c.out + "black" + c.out + " size=" + "4" + ">" + ia_row.column_name(j) +
+							"</font></td><td><font color=" + c.out + "black" + c.out + " size=" + "4" + ">" + ia_row.string_value (j) + "</font></td></tr>"
 						end
-
 						j := j + 1
 					end
 				end)
-				Result := query_answer + "</table></p>"
+				Result := query_answer + "</table><style type=" + c.out + "text/css" + c.out + ">p{padding-left: 110px;}table{ margin-left: 110px; border-color: black; border: 5px double #000; background: #FFFFFF; border-spacing: 1px; } td, th {padding: 7px; border: 1px solid black;}</style>"
 		end
 
 feature

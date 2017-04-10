@@ -23,7 +23,6 @@ feature -- Execution
 	execute
 		local
 			temp: STRING
-			file: WSF_FILE_RESPONSE
 			db: DATABASE_MANAGER
 			output: STRING
 			iterator: INTEGER
@@ -39,42 +38,98 @@ feature -- Execution
 			create db.make
 			if request.path_info.same_string ("/") or (request.path_info.same_string ("/forms_main.html") and request.is_get_request_method) then
 				load_main_page
+
 			elseif request.is_get_request_method and request.path_info.same_string ("/forms_section1.html") then
 				load_form_section
+
 			-- Query : all people who took part in the voting
 			elseif request.is_get_request_method and request.path_info.same_string ("/Query1.html") then
 				iterator := 1
 				create query_page.make
 				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
 				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
-				output := "<table border=" + "1" + " bordercolor=" + kk.out + "white" + kk.out + " align=" + kk.out + "left" + kk.out + ">" + "<tr><th><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> ID </font></th><th><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> Name of the unit </font></th></tr>"
+				output := "<p><table><tr><th><font size=4>ID</font></th><th><font size=4>Name of unit</font></th></tr>"
 				across
 					db.query_off_name as name
 				loop
-					output := output + "<tr><td><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> " + iterator.out + " </font></td><td><font color=" + kk.out + "white" + kk.out + " size=" + "4" + "> " + name.item + " </font></td></tr>"
+					output := output + "<tr><td><font color=" + kk.out + "black" + kk.out + " size=" + "4" + "> " + iterator.out + " </font></td><td><font color=" + kk.out + "black" + kk.out + " size=" + "4" + "> " + name.item + " </font></td></tr>"
 					iterator := iterator + 1
 				end
-				output := output + "</table>"
+				output := output + "</table></p><style type=" + kk.out + "text/css" + kk.out + ">table{ margin-left: 110px; border-color: black; border: 5px double #000; background: #FFFFFF; border-spacing: 1px; } td, th {padding: 7px; border: 1px solid black;}</style>"
 				query_page.set_title ("Query_1")
-				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" + "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" + "<div class=" + kk.out + "container-fluid" + kk.out + ">" + "<div class=" + kk.out + "navbar-header" + kk.out + ">" + "<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" + "EForms" + "</a>" + "</div>" + "<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" + "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" + "</a>" + "</p>" + "</div>" + "</div>" + "</nav>" + output)
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+									 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+									 	"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+									 		"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+									 			"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+									 				"EForms" +
+									 			"</a>" +
+									 		"</div>" +
+									 	"</div>" +
+									 "</div>" +
+									 "</nav>" +
+									 output +
+									 "<div class=" + kk.out + "col-md-12 mybutton" + kk.out + ">" +
+                   						 "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "><button type=" + kk.out + "submit" + kk.out + " class=" + kk.out + "btn btn-primary" + kk.out + ">" +
+                   						 	"Back to admin panel</button>" +
+                   						"</a>" +
+               						 "</div>" +
+               						 "<style>" +
+               						 	".mybutton {" +
+               						 		"padding-bottom: 50px;" +
+               						 		"padding-left: 110px;" +
+               						 	"}" +
+               						 	".btn-primary {" +
+               						 		"font-size: 20px;" +
+               						 		"width: 300px;" +
+               						 		"height: 50px;" +
+               						 	"}" +
+               						 "</style>")
 				response.send (query_page)
 				output := ""
 				iterator := 1
-			-- Query : Number of all participiants in voting
+
+			-- Query : Number of supervised students
 			elseif request.is_get_request_method and request.path_info.same_string ("/Query2.html") then
 				create query_page.make
 				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
 				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
 				query_page.set_title ("Query_2")
-				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" + "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" + "<div class=" + kk.out + "container-fluid" + kk.out + ">" + "<div class=" + kk.out + "navbar-header" + kk.out + ">" + "<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" + "EForms" + "</a>" + "</div>" + "<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" + "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" + "</a>" + "</p>" + "</div>" + "</div>" + "</nav>" + "<p class=" + kk.out + "col-xs-offset-1" + kk.out + ">" + "<font size=" + kk.out + "6" + kk.out + " color=" + kk.out + "white" + kk.out + ">" + "Number of supervised students total : " + db.query_supervised.out + "</font>" + "</p>")
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+									 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+								 		"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+								 			"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+								 				"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+								 					"EForms" +
+								 				"</a>" +
+								 			"</div>" +
+								 		"</div>" +
+									 "</div>" +
+									 "</nav>" +
+									 "<p class=" + kk.out + "col-xs-offset-1" + kk.out + ">" +
+									 	"<font size=" + kk.out + "6" + kk.out + " color=" + kk.out + "white" + kk.out + ">" +
+									 		"Number of supervised students : " + db.query_supervised.out +
+									 	"</font>" +
+									 "</p>" +
+									 "<div class=" + kk.out + "col-md-12 mybutton" + kk.out + ">" +
+                   						 "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "><button type=" + kk.out + "submit" + kk.out + " class=" + kk.out + "btn btn-primary" + kk.out + ">" +
+                   						 	"Back to admin panel</button>" +
+                   						"</a>" +
+               						 "</div>" +
+               						 "<style>" +
+               						 	".mybutton {" +
+               						 		"padding-bottom: 50px;" +
+               						 		"padding-left: 110px;" +
+               						 	"}" +
+               						 	".btn-primary {" +
+               						 		"font-size: 20px;" +
+               						 		"width: 300px;" +
+               						 		"height: 50px;" +
+               						 	"}" +
+               						 "</style>")
 				response.send (query_page)
-					-- Query : Cumulative info of a given unit
-			elseif request.is_get_request_method and request.path_info.same_string ("/Query3.html") then
-				create query_page.make
-				query_page.set_title ("Query_3")
-				query_page.set_body (output)
-				response.send (query_page)
-				output := ""
+
+			-- Query : Cumulative info of a given unit
 			elseif request.is_post_request_method and request.path_info.same_string ("/eforms_admin_panel.html") then
 				if attached {WSF_STRING} request.form_parameter ("unit") as val then
 					output := "<p><font color=" + kk.out + "white" + kk.out + " size=" + "5" + ">There is no unit with this name</font></p>"
@@ -90,9 +145,40 @@ feature -- Execution
 				query_page.add_style ("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "")
 				query_page.add_style ("https://cdn.rawgit.com/EFormsProject12345qwerty/EForms12345qwerty/23f632a2/css/forms.css", "")
 				query_page.set_title ("Query_3")
-				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" + "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" + "<div class=" + kk.out + "container-fluid" + kk.out + ">" + "<div class=" + kk.out + "navbar-header" + kk.out + ">" + "<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" + "EForms" + "</a>" + "</div>" + "<p class=" + kk.out + "navbar-text navbar-right" + kk.out + ">" + "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "class=" + kk.out + "navbar-link" + kk.out + ">To admin panel" + "</a>" + "</p>" + "</div>" + "</div>" + "</nav>" + output)
+				query_page.set_body ("<div class=" + kk.out + "container" + kk.out + ">" +
+								 	 "<nav class=" + kk.out + "navbar navbar-default" + kk.out + ">" +
+								 		"<div class=" + kk.out + "container-fluid" + kk.out + ">" +
+								 			"<div class=" + kk.out + "navbar-header" + kk.out + ">" +
+								 				"<a class=" + kk.out + "navbar-brand" + kk.out + "href=" + kk.out + "forms_main.html" + kk.out + ">" +
+								 					"EForms" +
+								 				"</a>" +
+								 			"</div>" +
+								 		"</div>" +
+								 	"</div>" +
+								 	 "</nav>" +
+								 	 output +
+								 	 "<div class=" + kk.out + "col-md-12 mybutton" + kk.out + ">" +
+                   						 "<a href=" + kk.out + "eforms_admin_panel.html" + kk.out + "><button type=" + kk.out + "submit" + kk.out + " class=" + kk.out + "btn btn-primary" + kk.out + ">" +
+                   						 	"Back to admin panel</button>" +
+                   						"</a>" +
+               						 "</div>" +
+								 	 "<style>" +
+								 	 	"p {" +
+								 	 		"padding-left: 110px;" +
+								 	 	"}" +
+               						 	".mybutton {" +
+               						 		"padding-bottom: 50px;" +
+               						 		"padding-left: 110px;" +
+               						 	"}" +
+               						 	".btn-primary {" +
+               						 		"font-size: 20px;" +
+               						 		"width: 300px;" +
+               						 		"height: 50px;" +
+               						 	"}" +
+               						 "</style>")
 				response.send (query_page)
 				output := ""
+
 			elseif request.is_get_request_method and request.path_info.same_string ("/eforms_admin_panel.html") then
 				load_admin_panel
 
@@ -278,8 +364,6 @@ feature
 			Result := temp
 		end
 
-feature
-
 	fill_form2 (field1: STRING; field2: STRING): STRING
 		local
 			checker: INTEGER
@@ -311,8 +395,6 @@ feature
 			end
 			Result := temp
 		end
-
-feature
 
 	fill_form3 (field1: STRING; field2: STRING; field3: STRING): STRING
 		local

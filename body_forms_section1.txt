@@ -18,11 +18,11 @@
                   <h3 class="panel-title">Section 1: General</h3>
                 </div>
                 <div class="panel-body">
-                  <h2> Name of the unit:* </h2>
+                  <h2> Name of the unit:<font color="red"><font color="red">*</font></font></h2>
                   <p>    Official name, for example laboratory name</p>
                   <input required maxlenght="15" type="text" class="form-control" name="off_name" placeholder="Enter the name of the unit here" aria-describedby="basic-addon2">
 
-                  <h2> Name of head unit:* </h2>
+                  <h2> Name of head unit:<font color="red">*</font> </h2>
                   <input required type="text" class="form-control" id="head_name" name="head_name" placeholder="Enter your answer here" aria-describedby="basic-addon2">
 
                   <h2> Beginning of the reporting period: </h2>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="panel-body">
                   <p>This section covers the educational activities of your unit.</p>
-                    <h2> Courses taught:* </h2>
+                    <h2> Courses taught:<font color="red">*</font> </h2>
                     <p>    Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
                     <table class="table information_json">
                     <tr>
@@ -66,10 +66,10 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="courses-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="courses-semester-1" type="text" class="form-control" placeholder="Semester"></td>
-                      <td><input name="courses-level-1" type="text" class="form-control" placeholder="Level"></td>
-                      <td><input name="courses-number-1" type="text" class="form-control" placeholder="Number"></td>
+                      <td><input required name="courses-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="courses-semester-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="courses-level-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="courses-number-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="courses-information_json_plus">
@@ -83,7 +83,7 @@
                   </table>
                     
 
-                    <h2> Examinations:* </h2>
+                    <h2> Examinations:<font color="red">*</font> </h2>
                     <p>    Numbered list. Include all examinations administered or co-administered by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
                     <table class="table information_json">
                     <tr>
@@ -96,10 +96,10 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="exam-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="exam-semester-1" type="text" class="form-control" placeholder="Semester"></td>
-                      <td><input name="exam-kind-1" type="text" class="form-control" placeholder="Kind"></td>
-                      <td><input name="exam-number-1" type="text" class="form-control" placeholder="Number"></td>
+                      <td><input required name="exam-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="exam-semester-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="exam-kind-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="exam-number-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="exam-information_json_plus">
@@ -112,7 +112,7 @@
                     </tr>
                   </table>
 
-                    <h2> Students supervised:* </h2>
+                    <h2> Students supervised:<font color="red">*</font> </h2>
                     <p>    For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship </p>
                     <table class="table information_json">
                     <tr>
@@ -123,8 +123,8 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="studs-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="studs-number-1" type="text" class="form-control" placeholder="Nature"></td>
+                      <td><input required name="studs-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="studs-number-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="studs-information_json_plus">
@@ -135,7 +135,7 @@
                     </tr>
                   </table>
                     
-                    <h2> Completed student reports:* </h2>
+                    <h2> Completed student reports:<font color="red">*</font> </h2>
                     <p>    For each report, indicate student name, title of report, as well as publication plans if any. </p>
                     <table class="table information_json">
                     <tr>
@@ -147,9 +147,9 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="reports-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="reports-title-1" type="text" class="form-control" placeholder="Title"></td>
-                      <td><input name="reports-plans-1" type="text" class="form-control" placeholder="Plans"></td>
+                      <td><input required name="reports-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="reports-title-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="reports-plans-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="reports-information_json_plus">
@@ -161,7 +161,7 @@
                     </tr>
                   </table>
 
-                    <h2> Completed PhD theses:* </h2>
+                    <h2> Completed PhD theses:<font color="red">*</font> </h2>
                     <p>    For each thesis, indicate student name, degree (e.g. PhD, Dr. Sc.), name of supervisor, names of other committee members, name of degree-granting institution (Innopolis or other), title of dissertation. </p>
                     <table class="table information_json">
                     <tr>
@@ -176,12 +176,12 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="theses-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="theses-degree-1" type="text" class="form-control" placeholder="Title"></td>
-                      <td><input name="theses-supervisor-1" type="text" class="form-control" placeholder="Plans"></td>
-                      <td><input name="theses-committee-1" type="text" class="form-control" placeholder="Plans"></td>
-                      <td><input name="theses-inst-name-1" type="text" class="form-control" placeholder="Plans"></td>
-                      <td><input name="theses-title-1" type="text" class="form-control" placeholder="Plans"></td>                      
+                      <td><input required name="theses-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="theses-degree-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="theses-supervisor-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="theses-committee-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="theses-inst-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="theses-title-1" type="text" class="form-control" placeholder="Answer"></td>                      
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="theses-information_json_plus">
@@ -204,7 +204,7 @@
                 </div>
                 <div class="panel-body">
                   <p>This section covers research and publication activities of your unit.</p>
-                  <h2> Grants:* </h2>
+                  <h2> Grants:<font color="red">*</font> </h2>
                   <p>Numbered list. For each item, list: title of project; granting agency; period covered by grant; whether continuation of other grant; amount.</p>
                   <table class="table information_json">
                     <tr>
@@ -218,11 +218,11 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="grants-title-1" type="text" class="form-control" placeholder="Title"></td>
-                      <td><input name="grants-agency-1" type="text" class="form-control" placeholder="Agency"></td>
-                      <td><input name="grants-period-1" type="text" class="form-control" placeholder="Period"></td>
-                      <td><input name="grants-type-1" type="text" class="form-control" placeholder="Type"></td>
-                      <td><input name="grants-amount-1" type="text" class="form-control" placeholder="Amount"></td>
+                      <td><input required name="grants-title-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="grants-agency-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="grants-period-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="grants-type-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="grants-amount-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="grants-information_json_plus">
@@ -236,7 +236,7 @@
                     </tr>
                   </table>
                   
-                  <h2> Project research:* </h2>
+                  <h2> Project research:<font color="red">*</font> </h2>
                   <p>Numbered list. Include all significant research themes in which members of your unit are involved, whether or not supported by a grant. For each item, list: title of project; Innopolis University personnel involved; external personnel involved if any; start date of project; expected end date; sources of financing.</p>
                   <table class="table information_json">
                     <tr>
@@ -251,12 +251,12 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="research-title-1" type="text" class="form-control" placeholder="Title"></td>
-                      <td><input name="research-personnel-1" type="text" class="form-control" placeholder="Personnel"></td>
-                      <td><input name="research-expersonnel-1" type="text" class="form-control" placeholder="External personnel"></td>
-                      <td><input name="research-start-date-1" type="text" class="form-control" placeholder="Start date"></td>
-                      <td><input name="research-end-date-1" type="text" class="form-control" placeholder="End date"></td>
-                      <td><input name="research-sources-1" type="text" class="form-control" placeholder="Sources"></td>
+                      <td><input required name="research-title-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="research-personnel-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="research-expersonnel-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="research-start-date-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="research-end-date-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input required name="research-sources-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="research-information_json_plus">
@@ -285,11 +285,11 @@
                     </tr>
                     <tr>
                       <td class="tbl-id"><p>1</p></td>
-                      <td><input name="col-country-1" type="text" class="form-control" placeholder="Country"></td>
-                      <td><input name="col-name-1" type="text" class="form-control" placeholder="Name"></td>
-                      <td><input name="col-departament-1" type="text" class="form-control" placeholder="Departament"></td>
-                      <td><input name="col-contact-1" type="text" class="form-control" placeholder="Contact"></td>
-                      <td><input name="col-nature-1" type="text" class="form-control" placeholder="Nature"></td>
+                      <td><input name="col-country-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input name="col-name-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input name="col-departament-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input name="col-contact-1" type="text" class="form-control" placeholder="Answer"></td>
+                      <td><input name="col-nature-1" type="text" class="form-control" placeholder="Answer"></td>
                       <td class="tbl-last"></td>
                     </tr>
                     <tr class="col-information_json_plus">
@@ -365,12 +365,12 @@
         jQuery('.research-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter + '</p></td>' + 
-          '<td><input name="research-title-' + counter + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="research-personnel-' + counter + '" type="text" class="form-control" placeholder="Personnel"></td>' +
-          '<td><input name="research-expersonnel-' + counter + '" type="text" class="form-control" placeholder="External personnel"></td>' +
-          '<td><input name="research-start-date-' + counter + '" type="text" class="form-control" placeholder="Start date"></td>' +
-          '<td><input name="research-end-date-' + counter + '" type="text" class="form-control" placeholder="End date"></td>' +
-          '<td><input name="research-sources-' + counter + '" type="text" class="form-control" placeholder="Sources"></td>' +
+          '<td><input required name="research-title-' + counter + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="research-personnel-' + counter + '" type="text" class="form-control" placeholder="Personnel"></td>' +
+          '<td><input required name="research-expersonnel-' + counter + '" type="text" class="form-control" placeholder="External personnel"></td>' +
+          '<td><input required name="research-start-date-' + counter + '" type="text" class="form-control" placeholder="Answer date"></td>' +
+          '<td><input required name="research-end-date-' + counter + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="research-sources-' + counter + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger research-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -389,10 +389,10 @@
         jQuery('.courses-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter2 + '</p></td>' + 
-          '<td><input name="courses-name-' + counter2 + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="courses-semester-' + counter2 + '" type="text" class="form-control" placeholder="Agency"></td>' +
-          '<td><input name="courses-level-' + counter2 + '" type="text" class="form-control" placeholder="Period"></td>' +
-          '<td><input name="courses-number-' + counter2 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input required name="courses-name-' + counter2 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="courses-semester-' + counter2 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="courses-level-' + counter2 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="courses-number-' + counter2 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger courses-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -411,10 +411,10 @@
         jQuery('.exam-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter3 + '</p></td>' + 
-          '<td><input name="exam-name-' + counter3 + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="exam-semester-' + counter3 + '" type="text" class="form-control" placeholder="Agency"></td>' +
-          '<td><input name="exam-kind-' + counter3 + '" type="text" class="form-control" placeholder="Period"></td>' +
-          '<td><input name="exam-number-' + counter3 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input required name="exam-name-' + counter3 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="exam-semester-' + counter3 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="exam-kind-' + counter3 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="exam-number-' + counter3 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger exam-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -433,8 +433,8 @@
         jQuery('.studs-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter4 + '</p></td>' + 
-          '<td><input name="studs-name-' + counter4 + '" type="text" class="form-control" placeholder="Name"></td>' +
-          '<td><input name="studs-number-' + counter4 + '" type="text" class="form-control" placeholder="Number"></td>' +
+          '<td><input required name="studs-name-' + counter4 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="studs-number-' + counter4 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger studs-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -453,9 +453,9 @@
         jQuery('.reports-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter5 + '</p></td>' + 
-          '<td><input name="reports-name-' + counter5 + '" type="text" class="form-control" placeholder="Name"></td>' +
-          '<td><input name="reports-title-' + counter5 + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="reports-plans-' + counter5 + '" type="text" class="form-control" placeholder="Plans"></td>' +
+          '<td><input required name="reports-name-' + counter5 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="reports-title-' + counter5 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="reports-plans-' + counter5 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger reports-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -466,7 +466,7 @@
       });
     </script>
 
-    <!--Courses script-->
+    <!--Theses script-->
     <script type="text/javascript">
       var counter6 = 1;
       jQuery('.theses-plus').click(function(){
@@ -474,12 +474,12 @@
         jQuery('.theses-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter6 + '</p></td>' + 
-          '<td><input name="theses-name-' + counter6 + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="theses-degree-' + counter6 + '" type="text" class="form-control" placeholder="Agency"></td>' +
-          '<td><input name="theses-supervisor-' + counter6 + '" type="text" class="form-control" placeholder="Period"></td>' +
-          '<td><input name="theses-committee-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
-          '<td><input name="theses-inst-name-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
-          '<td><input name="theses-title-' + counter6 + '" type="text" class="form-control" placeholder="Type"></td>' +
+          '<td><input required name="theses-name-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="theses-degree-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="theses-supervisor-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="theses-committee-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="theses-inst-name-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="theses-title-' + counter6 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger courses-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -498,11 +498,11 @@
         jQuery('.grants-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter7 + '</p></td>' + 
-          '<td><input name="grants-title-' + counter7 + '" type="text" class="form-control" placeholder="Title"></td>' +
-          '<td><input name="grants-agency-' + counter7 + '" type="text" class="form-control" placeholder="Agency"></td>' +
-          '<td><input name="grants-period-' + counter7 + '" type="text" class="form-control" placeholder="Period"></td>' +
-          '<td><input name="grants-type-' + counter7 + '" type="text" class="form-control" placeholder="Type"></td>' +
-          '<td><input name="grants-amount-' + counter7 + '" type="text" class="form-control" placeholder="Amount"></td>' +
+          '<td><input required name="grants-title-' + counter7 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="grants-agency-' + counter7 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="grants-period-' + counter7 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="grants-type-' + counter7 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input required name="grants-amount-' + counter7 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger grants-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
@@ -521,11 +521,11 @@
         jQuery('.col-information_json_plus').before(
         '<tr>' +
           '<td class="tbl-id"><p>' + counter8 + '</p></td>' + 
-          '<td><input name="col-country-' + counter8 + '" type="text" class="form-control" placeholder="Country"></td>' +
-          '<td><input name="col-name-' + counter8 + '" type="text" class="form-control" placeholder="Name"></td>' +
-          '<td><input name="col-departament-' + counter8 + '" type="text" class="form-control" placeholder="Departament"></td>' +
-          '<td><input name="col-contact-' + counter8 + '" type="text" class="form-control" placeholder="Contact"></td>' +
-          '<td><input name="col-nature-' + counter8 + '" type="text" class="form-control" placeholder="Nature"></td>' +
+          '<td><input name="col-country-' + counter8 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input name="col-name-' + counter8 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input name="col-departament-' + counter8 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input name="col-contact-' + counter8 + '" type="text" class="form-control" placeholder="Answer"></td>' +
+          '<td><input name="col-nature-' + counter8 + '" type="text" class="form-control" placeholder="Answer"></td>' +
           '<td class="tbl-id"><span class="btn btn-danger col-minus pull-right">&ndash;</span></td>' +
         '</tr>'
         );
